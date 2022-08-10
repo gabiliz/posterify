@@ -2,12 +2,14 @@ import { Box } from '@mui/material'
 import type { NextPage } from 'next'
 import React from 'react'
 import { Credits } from '../components/Credits'
-import Form from '../components/Form'
-import Login from '../components/Login'
 import { CustomText } from '../components/Text'
 import { CustomTitle } from '../components/Title'
+import { useSession } from "next-auth/react"
+import Login from '../components/Login'
+
 
 const Home: NextPage = () => {
+
   return (
     <Box sx={{
       display: 'flex',
@@ -21,7 +23,6 @@ const Home: NextPage = () => {
         Generate a custom poster with your most listened artists and tracks from Spotify.
       </CustomText>
       <Login />
-      <Form />
       <Credits />
     </Box>
   )
