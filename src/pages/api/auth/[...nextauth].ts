@@ -2,6 +2,7 @@ import SpotifyProvider from "next-auth/providers/spotify";
 import NextAuth from "next-auth"
 
 export default NextAuth({
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
       SpotifyProvider({
         clientId: process.env.SPOTIFY_CLIENT_ID!,
@@ -22,5 +23,4 @@ export default NextAuth({
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
 })
