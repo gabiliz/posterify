@@ -5,10 +5,12 @@ import { Credits } from '../components/Credits'
 import { CustomText } from '../components/Text'
 import { CustomTitle } from '../components/Title'
 import { useSession } from "next-auth/react"
-import Login from '../components/Login'
+import Form from '../components/Form'
+import { Login } from '../components/Login'
 
 
 const Home: NextPage = () => {
+  const {data: session} = useSession();
 
   return (
     <Box sx={{
@@ -22,7 +24,11 @@ const Home: NextPage = () => {
       <CustomText component="p">
         Generate a custom poster with your most listened artists and tracks from Spotify.
       </CustomText>
-      <Login />
+      {session ? (
+        <Form />
+      ) : (
+        <Login />
+      )}
       <Credits />
     </Box>
   )
