@@ -4,9 +4,10 @@ import NextAuth from "next-auth"
 export default NextAuth({
   providers: [
       SpotifyProvider({
-        clientId: process.env.SPOTIFY_CLIENT_ID,
-        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-        scope: "user-read-email user-top-read",
+        clientId: process.env.SPOTIFY_CLIENT_ID!,
+        clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,
+        authorization:
+        'https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private',
       })
   ],
   callbacks: {
@@ -16,7 +17,7 @@ export default NextAuth({
       }
       return token;
     },
-    async session(session, user) {
+    async session({ session, user }) {
       session.user = user;
       return session;
     },
