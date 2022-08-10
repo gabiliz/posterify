@@ -10,7 +10,6 @@ export default NextAuth({
         'https://accounts.spotify.com/authorize?scope=user-read-email,user-top-read',
       })
   ],
-  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, account }) {
       if (account) {
@@ -23,4 +22,5 @@ export default NextAuth({
       return session;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 })
